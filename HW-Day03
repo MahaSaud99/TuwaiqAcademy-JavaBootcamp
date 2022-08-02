@@ -1,0 +1,62 @@
+public class Main {
+    public static void main(String[] args) {
+
+        System.out.println("-------Q1-------");
+        int num=10;
+        String res=primeNumber(num);
+        System.out.println(num+" is "+res);
+        System.out.println();
+
+
+
+        System.out.println("-------Q2-------");
+        double tax=calculateTax(400.0);
+        System.out.println("the required tax for this price is = "+tax);
+        System.out.println();
+
+
+
+        System.out.println("-------Q3-------");
+        String check=palindrome("BOb");
+        System.out.println("The string is "+check);
+        System.out.println();
+
+
+
+
+    }
+
+
+    public static String primeNumber(int num){
+
+        for (int i = 2; i < num ; i++) {
+            if(num%i==0){
+                return "Not prime number";
+            }
+        }
+        return "Prime number";
+    }
+
+
+    public static double calculateTax(double price){
+        if (price>=100&&price<=500){
+            return price*15/100;
+        }
+        return 0 ;
+    }
+
+
+    public static String palindrome(String word){
+        word=word.toLowerCase();
+        String reverse="";
+        for (int i = word.length()-1 ; i >= 0; i--) {
+            reverse+=word.charAt(i);
+        }
+        if (reverse.equals(word)){
+            return "a palindrome";
+        }else {
+            return "not a palindrome";
+        }
+    }
+
+}
