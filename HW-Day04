@@ -1,0 +1,79 @@
+public class Main {
+    public static void main(String[] args) {
+
+
+        //Q1
+
+//        try {
+//            int numbers[] = {2, 5, 55, 4,-9};
+//            System.out.println("Smallest positive number is "+getSmallPositive(numbers));
+//        }catch (RuntimeException e){
+//            System.out.println(e.getMessage());
+//        }
+
+
+        //Q2
+//        try {
+//            Customer customer1=new Customer(123,"Maha",'f');
+//            Customer customer2=new Customer(1234,"Shahad",'l');
+//
+//
+//            System.out.println("Customer1 name: "+customer1.getName()+" ,id: "+customer1.getID()+" ,gender: "+customer1.getGender());
+//            //Or
+//            System.out.println(customer1.toString());
+//
+//        }catch (RuntimeException e){
+//            System.out.println(e.getMessage());
+//        }
+    }
+
+    public static int getSmallPositive(int[] numbers) throws RuntimeException{
+        int min=Integer.MAX_VALUE;
+        for (int i = 0; i < numbers.length ; i++) {
+            if (numbers[i]<0){
+                throw new RuntimeException("number is negative");
+            }
+            if(numbers[i]<min){
+                min=numbers[i];
+            }
+        }
+        return min;
+    }
+
+}
+
+
+class Customer{
+    private int ID;
+    private String name;
+    private char gender;
+
+    public Customer(int ID, String name, char gender) throws RuntimeException {
+        if (gender!='m'&&gender!='f'){
+            throw new RuntimeException("the gender is other than 'm' or 'f'");
+        }
+        this.ID = ID;
+        this.name = name;
+        this.gender = gender;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "ID=" + ID +
+                ", name=" + name +
+                 '}';
+    }
+}
