@@ -1,0 +1,165 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner in = new Scanner(System.in);
+
+        //---------Q1------------
+
+
+//        try{
+//        System.out.println("Please enter your first number : ");
+//        double number1= in.nextDouble();
+//
+//        System.out.println("Please enter your second number : ");
+//        double number2= in.nextDouble();
+//
+//        System.out.println("Please enter the operation : ");
+//        String operation= in.next();
+//
+//
+//        if (operation.equals("+")){
+//            System.out.println(number1+number2);
+//        }else if(operation.equals("-")){
+//            System.out.println(number1-number2);
+//        } else if (operation.equals("*")){
+//            System.out.println(number1*number2);
+//        }else if (operation.equals("/")){
+//            System.out.println(number1/number2);
+//        } else if (operation.equals("%")){
+//            System.out.println(number1%number2);
+//        }else {
+//            System.out.println("Wrong operation!");
+//        }
+//        }catch (InputMismatchException e){
+//            System.out.println(e.getStackTrace());
+//        }
+
+
+
+        // -----------Q2--------------
+
+//        int random = (int) (Math.random() * 3);
+//
+//
+//        try {
+//
+//            System.out.println("Please enter a number (0, 1 or 2), which represents scissors, rock and paper, respectively.");
+//            int userChoice = in.nextInt();
+//
+//            if (userChoice == 0 && random == 2) {
+//                System.out.println("Yay! you win");
+//            } else if (userChoice == 0 && random == 1) {
+//                System.out.println("Oh! you lose");
+//            } else if (userChoice == 1 && random == 0) {
+//                System.out.println("Yay! you win");
+//            } else if (userChoice == 1 && random == 2) {
+//                System.out.println("Oh! you lose");
+//            } else if (userChoice == 2 && random == 1) {
+//                System.out.println("Yay! you win");
+//            } else if (userChoice == 2 && random == 0) {
+//                System.out.println("Oh! you lose");
+//            } else if (userChoice == random) {
+//                System.out.println("Draw! try again");
+//            } else {
+//                System.out.println("Please enter 0,1 or 2 only");
+//            }
+//        }catch (InputMismatchException e){
+//            System.out.println(e.getStackTrace());
+//        }
+
+
+        //-----------Q3-------------
+
+//        // Test constructor and toString()
+//        Account a1 = new Account("A101", "Tan Ah Teck", 88);
+//        System.out.println(a1);  // toString();
+//        Account a2 = new Account("A102", "Kumar"); // default balance
+//        System.out.println(a2);
+//
+//        // Test Getters
+//        System.out.println("ID: " + a1.getId());
+//        System.out.println("Name: " + a1.getName());
+//        System.out.println("Balance: " + a1.getBalance());
+//
+//        // Test credit() and debit()
+//        a1.credit(100);
+//        System.out.println(a1);
+//        a1.debit(50);
+//        System.out.println(a1);
+//        a1.debit(500);  // debit() error
+//        System.out.println(a1);
+//
+//        // Test transfer()
+//        a1.transferTo(a2, 100);  // toString()
+//        System.out.println(a1);
+//        System.out.println(a2);
+
+
+    }
+}
+
+class Account {
+    private String id;
+    private String name;
+    private int balance = 0;
+
+    public Account(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Account(String id, String name, int balance) {
+        this.id = id;
+        this.name = name;
+        this.balance = balance;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public int credit(int amount){
+        this.balance+=amount;
+        return this.balance;
+    }
+
+    public int debit(int amount){
+        if(amount<=this.balance){
+            this.balance-=amount;
+        }else {
+            System.out.println("Amount exceeded balance");
+            return this.balance;
+        }
+        return balance;
+    }
+
+    public int transferTo(Account another ,int amount){
+        if (amount<=this.balance){
+            this.balance-=amount;
+            another.credit(amount);
+        }else {
+            System.out.println("Amount exceeded balance");
+        }
+        return balance;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", balance=" + balance +
+                '}';
+    }
+}
