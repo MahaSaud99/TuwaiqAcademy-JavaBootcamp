@@ -1,0 +1,84 @@
+#1
+create database store;
+
+#2
+create table countries(
+    code int primary key,
+    name varchar(20) unique ,
+    continent_name varchar(20) not null
+);
+
+#3
+create table users(
+    id int primary key ,
+    full_name varchar(20),
+    email varchar(20) unique ,
+    gender char(1) check (gender='m' or gender='f'),
+    date_of_birth varchar(15),
+    creaated_at datetime,
+    country_code int,
+    foreign key (country_code) references countries(code)
+);
+
+#4
+create table orders(
+    id int primary key,
+    user_id int,
+    status varchar(6) check (status='start' or status='finish'),
+    creaated_at datetime,
+    foreign key (user_id) references users(id)
+);
+
+#5
+create table products(
+    id int primary key ,
+    name varchar(10) not null ,
+    price int default(0),
+    status varchar(10) check (status='valid' or status='expired'),
+    created_at datetime
+);
+
+#6
+create table order_products(
+    order_id int,
+    product_id int,
+    quantity int default(0),
+    foreign key (order_id) references orders(id),
+    foreign key (product_id) references products(id)
+);
+
+#Bouns
+# DDL - Alter
+alter table users modify creaated_at datetime default('2022-08-15 03:14:07');
+alter table orders modify creaated_at datetime default('2022-08-15 03:14:07');
+alter table products modify created_at datetime default('2022-08-15 03:14:07');
+
+
+#DML - insert
+
+insert into countries values (123,'Saudi Arabia','Asia');
+insert into users values (123,'Maha Alyemeni','Maha@gmail.com','f','3/6/1999','2022-08-15 06:31:07',123);
+insert into orders values (123,123,'start','2022-08-15 06:31:07');
+insert into products values (123,'pen',2,'valid','2022-08-15 06:34:07');
+insert into products values (456,'bag',200,'valid','2022-08-15 06:34:07');
+insert into order_products values (123,123,5);
+
+# DQL - Select
+select * from countries;
+select * from users;
+select * from orders;
+select * from products;
+select * from order_products;
+
+# DML - Update
+update countries set name='KSA' where code=123;
+
+# DML - Delete
+delete from products where id=456;
+
+
+
+
+
+
+
